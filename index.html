@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta de Casamento</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: pink;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 30vh;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: white;
+            background-color: #ff69b4;
+            margin: 0 10px;
+            position: relative;
+        }
+
+        .yes {
+            background-color: #ff69b4;
+        }
+
+        .no {
+            background-color: #ff7f7f;
+        }
+
+        .button.no {
+            position: absolute;
+            transition: top 0.5s ease, left 0.5s ease;
+        }
+
+        .message {
+            font-size: 18px;
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+    <script>
+        let messages = ["Nem tenta😡", "Tu para😭"];
+
+        function moveButton() {
+            var button = document.getElementById('no-button');
+            var message = document.getElementById('message');
+            var originalText = button.innerText;
+            var messageIndex = Math.floor(Math.random() * messages.length);
+            button.innerText = messages[messageIndex];
+            setTimeout(() => {
+                button.innerText = originalText;
+            }, 1000); // Voltar ao texto original após 1 segundo
+            return false; // Importante para evitar o comportamento padrão da tag âncora
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1 style="color: black;">ACEITA CASAR COMIGO, JÚLIA?</h1>
+        <div class="buttons">
+            <a href="congratulations.html" class="button yes">Sim</a>
+            <a href="#" id="no-button" class="button no" onclick="return moveButton()">Não</a>
+            <div id="message" class="message"></div> <!-- Adicionado o elemento <div> para exibir a mensagem -->
+        </div>
+    </div>
+</body>
+</html>
